@@ -47,10 +47,11 @@ const options = {
 
     update: async function (req, res) {
         const id = req.params.id;
+        console.log(id);
 
         FeasibilityModel.findOne({_id: id}, (err, feasibility) => {
             if (err) {
-                return res.status(500).json({err})
+                return res.status(500).json({err, message: "Error finding feasibility"})
             }
 
             if (!feasibility) {
@@ -59,15 +60,17 @@ const options = {
                 })
             }
 
+            console.log(req.body);
+
             feasibility.name = req.body.name ? req.body.name : feasibility.name
             feasibility.numberOfSites = req.body.numberOfSites ? req.body.numberOfSites : feasibility.numberOfSites
             feasibility.product = req.body.product ? req.body.product : feasibility.product
             feasibility.dateReceived = req.body.dateReceived ? req.body.dateReceived : feasibility.dateReceived
-            feasibility.dateCompleted = req.body.dateCompleted ? req.body.dateCompleted : feasibility.dateCompleted
+            feasibility.dateCompleted = req.body.dateCompleted ? req.body.dateCompleted : feasibility.dateCompleted ? feasibility.dateCompleted : null
 
             feasibility.save((err, updatedFeasibility) => {
                 if (err) {
-                    return res.status(500).json({err})
+                    return res.status(500).json({err, message: "Error saving feasibility"})
                 }
 
                 return res.status(201).json(updatedFeasibility)
