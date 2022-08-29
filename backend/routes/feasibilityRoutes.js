@@ -1,8 +1,8 @@
-import express from "express";
-import feasibilityController from "../controllers/feasibilityController";
+const express = require("express");
+const feasibilityController = require("../controllers/feasibilityController");
 
-const router = express.Router()
+const router = express.Router();
 
-router.get("/", feasibilityController.list)
+router.get("/", feasibilityController.list);
 
-export default router
+module.exports = router;

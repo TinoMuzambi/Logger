@@ -1,8 +1,8 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
-const MONGO_URI = process.env.MONGO_URI
+const MONGO_URI = process.env.MONGO_URI;
 
-if (!MONGO_URI) throw new Error("An error occured")
+if (!MONGO_URI) throw new Error("An error occured");
 
 let cached = { conn: null, promise: null };
 
@@ -14,7 +14,7 @@ if (!cached) {
  * Connect to the database.
  * @returns A mongoose object.
  */
-const dbConnect = () => {
+const dbConnect = async () => {
 	if (cached.conn) {
 		return cached.conn;
 	}
@@ -26,14 +26,12 @@ const dbConnect = () => {
 			bufferCommands: false,
 		};
 
-		cached.promise = mongoose
-			.connect(MONGO_URI, opts)
-			.then((mongoose) => {
-				return mongoose;
-			});
+		cached.promise = mongoose.connect(MONGO_URI, opts).then((mongoose) => {
+			return mongoose;
+		});
 	}
 	cached.conn = await cached.promise;
 	return cached.conn;
 };
 
-export default dbConnect;
+module.exports = dbConnect;
