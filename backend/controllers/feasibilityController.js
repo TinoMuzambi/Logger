@@ -60,7 +60,7 @@ const options = {
             }
 
             feasibility.name = req.body.name ? req.body.name : feasibility.name
-            feasibility.numberOfSites = req.body.numberOfSites ? req.body.numberOfSites : feasibility.name
+            feasibility.numberOfSites = req.body.numberOfSites ? req.body.numberOfSites : feasibility.numberOfSites
             feasibility.product = req.body.product ? req.body.product : feasibility.product
             feasibility.dateReceived = req.body.dateReceived ? req.body.dateReceived : feasibility.dateReceived
             feasibility.dateCompleted = req.body.dateCompleted ? req.body.dateCompleted : feasibility.dateCompleted
