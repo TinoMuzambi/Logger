@@ -25,3 +25,5 @@ const Feasibility = new mongoose.Schema({
         type: Date,
     }
 })
+
+export default mongoose.models.Feasibility || mongoose.model("Feasibility", Feasibility, "feasibilities")
