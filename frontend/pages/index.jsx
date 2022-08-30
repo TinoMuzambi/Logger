@@ -13,19 +13,42 @@ const Home = () => {
 		dateCompleted: "",
 	})
 
-	useEffect(() => {
-		const getFeasibilities = async () => {
-			const res = await fetch(`${API_BASE_URL}/api/feasibilities`)
-			const data = await res.json()
+	const getFeasibilities = async () => {
+		const res = await fetch(`${API_BASE_URL}/api/feasibilities`)
+		const data = await res.json()
 
-			setFeasibilities(data)
-		}
+		setFeasibilities(data)
+	}
+
+	useEffect(() => {
 		getFeasibilities()
 	}, [])
 
-	const submitHandler = (e) => {
+	const submitHandler = async (e) => {
 		e.preventDefault()
-		console.log(formData);
+		try {
+			const res = await fetch(`${API_BASE_URL}/api/feasibilities`, {
+				method: "POST", 
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify(formData)
+			})
+			const data = await res.json()
+			console.log(data);
+			getFeasibilities()
+			alert("Feasibility saved")
+			setFormData({
+				name: "",
+				numberOfSites: "",
+				product: "",
+				dateReceived: "",
+				dateCompleted: "",
+			})
+		} catch (error) {
+			console.error(error);
+			alert("Something went wrong...")
+		}
 	}
 
 	return (
