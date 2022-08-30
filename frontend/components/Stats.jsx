@@ -27,7 +27,7 @@ const Stats = ({ feasibilities }) => {
 			<div className="container">
 				<p className="stat">Total number of sites processed: <span>{feasibilities.reduce((acc, feasibility) => feasibility.numberOfSites + acc, 0)}</span></p>
 
-				<p className="stat">Average turn around: <span>{feasibilities.reduce((acc, feasibility) => moment(feasibility?.dateCompleted ? feasibility.dateCompleted : moment()).diff(moment(feasibility.dateReceived), "days") + acc,0)/feasibilities.length} days</span></p>
+				<p className="stat">Average turn around: <span>{(feasibilities.reduce((acc, feasibility) => moment(feasibility?.dateCompleted ? feasibility.dateCompleted : moment()).diff(moment(feasibility.dateReceived), "days") + acc,0)/feasibilities.length).toFixed(2)} days</span></p>
 
 				<p className="stat">Most popular product: <span>{max}</span></p>
 			</div> 
