@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import moment from "moment"
 
-const Stats = ({feasibilities}) => {
+const Stats = ({ feasibilities }) => {
 	
 	const [max, setMax] = useState("")
 	const feasibilitiesByProduct = {}
-
-
 
 	useEffect(() => {
 		feasibilities.forEach((feasibility) => {
@@ -20,7 +18,7 @@ const Stats = ({feasibilities}) => {
 			} 
 		});
 		console.log({feasibilitiesByProduct});
-	}, [])
+	}, [feasibilities])
 
 
 	return (
