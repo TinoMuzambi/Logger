@@ -3,6 +3,7 @@ import moment from "moment"
 import {MdDelete,MdModeEdit} from "react-icons/md"
 
 import { API_BASE_URL, PRODUCTS } from "../utils";
+import Stats from "../components/Stats";
 
 const Home = () => {
 	const [feasibilities, setFeasibilities] = useState([])
@@ -120,6 +121,7 @@ const Home = () => {
 					</div>
 					<button type="submit">{editMode.state ? "Update" : "Create new"} Feasibility</button>
 				</form>
+				<Stats feasibilities={feasibilities} />
 			</div>
 			<div className="feasibilities">
 			<h2>My Feasibilities</h2>
