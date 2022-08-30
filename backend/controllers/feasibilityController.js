@@ -2,6 +2,9 @@ const FeasibilityModel = require("../models/FeasibilityModel");
 const dbConnect = require("../utils/mongodb");
 
 const options = {
+	/**
+	 * Get all feasibilities.
+	 */
 	list: async function (req, res) {
 		await dbConnect();
 		FeasibilityModel.find((err, feasibilities) => {
@@ -15,6 +18,9 @@ const options = {
 		});
 	},
 
+	/**
+	 * Get specified feasibility.
+	 */
 	show: async function (req, res) {
 		await dbConnect();
 		const id = req.params.id;
@@ -34,6 +40,9 @@ const options = {
 		});
 	},
 
+	/**
+	 * Create feasibility.
+	 */
 	create: async function (req, res) {
 		await dbConnect();
 		const feasibility = new FeasibilityModel(req.body);
@@ -47,6 +56,9 @@ const options = {
 		});
 	},
 
+	/**
+	 * Update feasibility.
+	 */
 	update: async function (req, res) {
 		await dbConnect();
 		const id = req.params.id;
@@ -92,6 +104,9 @@ const options = {
 		});
 	},
 
+	/**
+	 * Delete feasibility.
+	 */
 	remove: async function (req, res) {
 		await dbConnect();
 		const id = req.params.id;
