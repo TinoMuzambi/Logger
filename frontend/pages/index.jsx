@@ -140,11 +140,11 @@ const Home = () => {
 						</div>
 						<div className="entry">
 							<h3>Date Received:</h3>
-							<p>{feasibility.dateReceived}</p>
+							<p>{moment(feasibility.dateReceived).format("DD/MM/YYYY HH:MM")}</p>
 						</div>
 						<div className="entry">
 							<h3>Date Completed:</h3>
-							<p>{feasibility?.dateCompleted}</p>
+							<p>{feasibility?.dateCompleted?moment(feasibility?.dateCompleted).format("DD/MM/YYYY HH:MM"): null}</p>
 						</div>
 						</div>
 
