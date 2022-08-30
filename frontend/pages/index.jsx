@@ -6,7 +6,9 @@ import { API_BASE_URL, PRODUCTS } from "../utils";
 
 const Home = () => {
 	const [feasibilities, setFeasibilities] = useState([])
+	const [editMode, setEditMode] = useState({state:false, id:""})
 	const [formData, setFormData] = useState({
+		_id: "",
 		name: "",
 		numberOfSites: "",
 		product: "",
@@ -29,8 +31,8 @@ const Home = () => {
 	const submitHandler = async (e) => {
 		e.preventDefault()
 		try {
-			const res = await fetch(`${API_BASE_URL}/api/feasibilities`, {
-				method: "POST", 
+			const res = await fetch(`${API_BASE_URL}/api/feasibilities${editMode.state ? `/${editMode.id}` : ""}`, {
+				method: editMode.state ? "PUT" : "POST", 
 				headers: {
 					"Content-Type": "application/json"
 				},
@@ -38,7 +40,11 @@ const Home = () => {
 			})
 			const data = await res.json()
 			console.log(data);
-			setFeasibilities((prev) => [formData, ...prev])
+			if (editMode.state) {
+				setEditMode({state: false, id:""}) 
+			} 
+			getFeasibilities()
+			
 			alert("Feasibility saved")
 			setFormData({
 				name: "",
@@ -54,7 +60,8 @@ const Home = () => {
 	}
 
 	const editHandler = (feasibility) => {
-		setFormData({...feasibility, dateReceived: moment(feasibility.dateReceived).format("YYYY-MM-DD"), dateCompleted: moment(feasibility.dateCompleted).format("YYYY-MM-DD")})
+		setEditMode({state:true, id: feasibility._id})
+		setFormData({...feasibility, dateReceived: moment(feasibility.dateReceived).format("YYYY-MM-DD"), dateCompleted: feasibility.dateCompleted ? moment(feasibility.dateCompleted).format("YYYY-MM-DD"): ""})
 	}
 
 	const deleteHandler = async (id) => {
@@ -69,7 +76,7 @@ const Home = () => {
 
 
 				alert("Feasibility deleted")
-				setFeasibilities((prev) => [...prev.filter((feasibility) => feasibility._id === id)])
+				getFeasibilities()
 
 			} catch (error) {
 				console.error(error);
@@ -111,7 +118,7 @@ const Home = () => {
 						<label htmlFor="dateCompleted">Date Completed</label>
 						<input type="date" id="dateCompleted" max={moment().format("YYYY-MM-DD")} value={formData.dateCompleted} onChange={(e) => setFormData((prev) => ({...prev, dateCompleted: e.target.value}))} />
 					</div>
-					<button type="submit">Create new Feasibility</button>
+					<button type="submit">{editMode.state ? "Update" : "Create new"} Feasibility</button>
 				</form>
 			</div>
 			<div className="feasibilities">
