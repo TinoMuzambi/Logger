@@ -149,8 +149,8 @@ const Home = () => {
 						</div>
 
 						<div className="buttons">
-							<button onClick={() => editHandler(feasibility)}><MdModeEdit/></button>
-							<button onClick={() => deleteHandler(feasibility._id)}><MdDelete/></button>
+							<button onClick={() => editHandler(feasibility)}><MdModeEdit fill="white" /></button>
+							<button onClick={() => deleteHandler(feasibility._id)}><MdDelete fill="white" /></button>
 						</div>
 					</div>
 				))}
