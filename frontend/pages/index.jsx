@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import moment from "moment"
 
 import { API_BASE_URL, PRODUCTS } from "../utils";
 
@@ -24,6 +25,7 @@ const Home = () => {
 
 	const submitHandler = (e) => {
 		e.preventDefault()
+		console.log(formData);
 	}
 
 	return (
@@ -39,7 +41,7 @@ const Home = () => {
 					</div>
 					<div className="input-group">
 						<label htmlFor="numberOfSites">Number of Sites</label>
-						<input type="number" id="numberOfSites" required value={formData.numberOfSites} onChange={(e) => setFormData((prev) => ({...prev, numberOfSites: e.target.value}))}/>
+						<input type="number" id="numberOfSites" required min={1} value={formData.numberOfSites} onChange={(e) => setFormData((prev) => ({...prev, numberOfSites: e.target.value}))}/>
 					</div>
 					<div className="input-group">
 						<label htmlFor="product">Product</label>
@@ -52,11 +54,11 @@ const Home = () => {
 					</div>
 					<div className="input-group">
 						<label htmlFor="dateReceived">Date Received</label>
-						<input type="date" id="dateReceived" required value={formData.dateReceived} onChange={(e) => setFormData((prev) => ({...prev, dateReceived: e.target.value}))} />
+						<input type="date" id="dateReceived" max={moment().format("YYYY-MM-DD")} required value={formData.dateReceived} onChange={(e) => setFormData((prev) => ({...prev, dateReceived: e.target.value}))} />
 					</div>
 					<div className="input-group">
 						<label htmlFor="dateCompleted">Date Completed</label>
-						<input type="date" id="dateCompleted" value={formData.dateCompleted} onChange={(e) => setFormData((prev) => ({...prev, dateCompleted: e.target.value}))} />
+						<input type="date" id="dateCompleted" max={moment().format("YYYY-MM-DD")} value={formData.dateCompleted} onChange={(e) => setFormData((prev) => ({...prev, dateCompleted: e.target.value}))} />
 					</div>
 					<button type="submit">Create new Feasibility</button>
 				</form>
