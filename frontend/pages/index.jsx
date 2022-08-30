@@ -18,6 +18,7 @@ const Home = () => {
 		const res = await fetch(`${API_BASE_URL}/api/feasibilities`)
 		const data = await res.json()
 
+		console.log(data);
 		setFeasibilities(data)
 	}
 
@@ -49,6 +50,31 @@ const Home = () => {
 		} catch (error) {
 			console.error(error);
 			alert("Something went wrong...")
+		}
+	}
+
+	const editHandler = (feasibility) => {
+		setFormData({...feasibility, dateReceived: moment(feasibility.dateReceived).format("YYYY-MM-DD"), dateCompleted: moment(feasibility.dateCompleted).format("YYYY-MM-DD")})
+	}
+
+	const deleteHandler = async (id) => {
+		if (confirm("Are you sure you want to delete this feasibility?")) {
+			try {
+				await fetch(`${API_BASE_URL}/api/feasibilities/${id}`, {
+					method: "DELETE",
+					headers: {
+						"Content-Type": "application/json"
+					}
+				})
+
+
+				alert("Feasibility deleted")
+				setFeasibilities((prev) => [...prev.filter((feasibility) => feasibility._id === id)])
+
+			} catch (error) {
+				console.error(error);
+				alert("Something went wrong")
+			}
 		}
 	}
 
@@ -116,8 +142,8 @@ const Home = () => {
 						</div>
 
 						<div className="buttons">
-							<button><MdModeEdit/></button>
-							<button><MdDelete/></button>
+							<button onClick={() => editHandler(feasibility)}><MdModeEdit/></button>
+							<button onClick={() => deleteHandler(feasibility._id)}><MdDelete/></button>
 						</div>
 					</div>
 				))}
