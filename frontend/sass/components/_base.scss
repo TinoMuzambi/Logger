@@ -39,24 +39,64 @@ body {
 	.feasibilities {
 		flex: 1;
 		margin: 0 8rem;
-
+		
 		.feasibility {
 			margin: 0.5em 0;
-			border-bottom: 1px solid #000;
+			display: flex;
+			gap: 1rem;
+			position: relative;
 
-			.entry {
-				display: grid;
-				grid-template-columns: 1fr 1fr;
-				gap: 1rem;
-				border-bottom: 1px dashed black;
+			&:hover .buttons {
+				opacity: 1;
+				pointer-events: all;
+			}
+			
+			.info {
+				display: flex;
+				flex-direction: column;
+				border-bottom: 1px solid #000;
 
-				&:last-child {
-					border-bottom: none;
+				.entry {
+					display: grid;
+					grid-template-columns: 1fr 1fr;
+					gap: 1rem;
+					border-bottom: 1px dashed black;
+
+					&:last-child {
+						border-bottom: none;
+					}
+
+					h3 {
+						font-size: 1rem;
+						font-weight: 600;
+					}
 				}
+			}
 
-				h3 {
-					font-size: 1rem;
-					font-weight: 600;
+			.buttons {
+				opacity: 0;
+				pointer-events: none;
+				transition: opacity .4s ease;
+				position: absolute;
+				right: 0;
+				top: 50%;
+				transform: translateY(-50%);
+				align-self: center;
+
+				button {
+					margin: 0 .5rem;
+					padding: 0.5rem;
+					background: white;
+					border-radius: 1rem;
+					border: none;
+					outline: none;
+					box-shadow: 0 0 15px 5px rgba($color: #000000, $alpha: .4);
+					cursor: pointer;
+
+					&:hover,&:focus {
+						box-shadow: 0 0 20px 5px rgba($color: #000000, $alpha: .4);
+
+					}
 				}
 			}
 		}

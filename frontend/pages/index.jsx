@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import moment from "moment"
+import {MdDelete,MdModeEdit} from "react-icons/md"
 
 import { API_BASE_URL, PRODUCTS } from "../utils";
 
@@ -91,6 +92,7 @@ const Home = () => {
 			<h2>My Feasibilities</h2>
 				{feasibilities.map((feasibility, key) => (
 					<div className="feasibility" key={key}>
+						<div className="info">
 						<div className="entry">
 							<h3>Name:</h3>
 							<p>{feasibility.name}</p>
@@ -110,6 +112,12 @@ const Home = () => {
 						<div className="entry">
 							<h3>Date Completed:</h3>
 							<p>{feasibility?.dateCompleted}</p>
+						</div>
+						</div>
+
+						<div className="buttons">
+							<button><MdModeEdit/></button>
+							<button><MdDelete/></button>
 						</div>
 					</div>
 				))}
