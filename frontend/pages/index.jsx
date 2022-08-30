@@ -35,15 +35,16 @@ const Home = () => {
 				<form onSubmit={submitHandler}>
 					<div className="input-group">
 						<label htmlFor="name">Name</label>
-						<input type="text" id="name" required />
+						<input type="text" id="name" required value={formData.name} onChange={(e) => setFormData((prev) => ({...prev, name: e.target.value}))} />
 					</div>
 					<div className="input-group">
 						<label htmlFor="numberOfSites">Number of Sites</label>
-						<input type="number" id="numberOfSites" required />
+						<input type="number" id="numberOfSites" required value={formData.numberOfSites} onChange={(e) => setFormData((prev) => ({...prev, numberOfSites: e.target.value}))}/>
 					</div>
 					<div className="input-group">
 						<label htmlFor="product">Product</label>
-						<select id="product" required>
+						<select id="product" required value={formData.product} onChange={(e) => setFormData((prev) => ({...prev, product: e.target.value}))}>
+							<option value="" disabled>Choose a product</option>
 							{PRODUCTS.map((product, key) => (
 								<option value={product} key={key}>{product}</option>
 							))}
@@ -51,11 +52,11 @@ const Home = () => {
 					</div>
 					<div className="input-group">
 						<label htmlFor="dateReceived">Date Received</label>
-						<input type="date" id="dateReceived" required />
+						<input type="date" id="dateReceived" required value={formData.dateReceived} onChange={(e) => setFormData((prev) => ({...prev, dateReceived: e.target.value}))} />
 					</div>
 					<div className="input-group">
 						<label htmlFor="dateCompleted">Date Completed</label>
-						<input type="date" id="dateCompleted" />
+						<input type="date" id="dateCompleted" value={formData.dateCompleted} onChange={(e) => setFormData((prev) => ({...prev, dateCompleted: e.target.value}))} />
 					</div>
 					<button type="submit">Create new Feasibility</button>
 				</form>
