@@ -9,7 +9,6 @@ const Home = () => {
 	const [feasibilities, setFeasibilities] = useState([])
 	const [editMode, setEditMode] = useState({state:false, id:""})
 	const [formData, setFormData] = useState({
-		_id: "",
 		name: "",
 		numberOfSites: "",
 		product: "",
@@ -22,7 +21,7 @@ const Home = () => {
 		const data = await res.json()
 
 		console.log(data);
-		setFeasibilities(data)
+		setFeasibilities(data.sort((a,b) => a.dateReceived.localeCompare(b.dateReceived)))
 	}
 
 	useEffect(() => {
