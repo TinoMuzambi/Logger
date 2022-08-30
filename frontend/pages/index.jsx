@@ -36,7 +36,7 @@ const Home = () => {
 			})
 			const data = await res.json()
 			console.log(data);
-			getFeasibilities()
+			setFeasibilities((prev) => [formData, ...prev])
 			alert("Feasibility saved")
 			setFormData({
 				name: "",
@@ -55,6 +55,7 @@ const Home = () => {
 		<main>
 			<h1>Logger</h1>
 
+			<div className="container">
 			<div className="form-holder">
 				<h2>Record new Feasibility</h2>
 				<form onSubmit={submitHandler}>
@@ -113,6 +114,7 @@ const Home = () => {
 					</div>
 				))}
 
+			</div>
 			</div>
 		</main>
 	);

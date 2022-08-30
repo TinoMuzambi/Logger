@@ -11,4 +11,54 @@
 
 body {
 	overflow-x: hidden;
+	padding: 2rem;
+}
+
+.container {
+	display: flex;
+	justify-content: space-around;
+	margin: 2rem 0;
+
+	.form-holder {
+		flex: 1;
+		margin: 0 4rem;
+
+		form {
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+
+			.input-group {
+				display: flex;
+				flex-direction: column;
+				margin: .5rem 0;
+			}
+		}
+	}
+
+	.feasibilities {
+		flex: 1;
+		margin: 0 8rem;
+
+		.feasibility {
+			margin: 0.5em 0;
+			border-bottom: 1px solid #000;
+
+			.entry {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 1rem;
+				border-bottom: 1px dashed black;
+
+				&:last-child {
+					border-bottom: none;
+				}
+
+				h3 {
+					font-size: 1rem;
+					font-weight: 600;
+				}
+			}
+		}
+	}
 }
