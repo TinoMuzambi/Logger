@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import moment from "moment"
-import {MdDelete,} from "react-icons/md"
 
 import { API_BASE_URL,  } from "../utils";
 import Stats from "../components/Stats";
 
 const Home = () => {
 	const [feasibilities, setFeasibilities] = useState([])
-
 
 	const getFeasibilities = async () => {
 		const res = await fetch(`${API_BASE_URL}/api/feasibilities`)
@@ -58,7 +56,6 @@ const Home = () => {
 							<p>{feasibility?.dateCompleted ? moment(feasibility?.dateCompleted.replace("Z", "")).format("DD/MM/YYYY HH:mm"): null}</p>
 						</div>
 						</div>
-
 
 					</div>
 				))}
