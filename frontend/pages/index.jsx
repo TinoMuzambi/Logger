@@ -92,7 +92,7 @@ const Home = () => {
 			<div className="container">
 			<div className="form-holder">
 				<h2>Stats</h2>
-				{/* <form onSubmit={submitHandler}>
+				<form onSubmit={submitHandler}>
 					<div className="input-group">
 						<label htmlFor="name">Name</label>
 						<input type="text" id="name" required value={formData.name} onChange={(e) => setFormData((prev) => ({...prev, name: e.target.value}))} />
@@ -121,7 +121,7 @@ const Home = () => {
 					<div className="input-group">
 					<button type="submit">{editMode.state ? "Update" : "Create new"} Feasibility</button>
 
-						</div>				</form> */}
+						</div>				</form>
 				<Stats feasibilities={feasibilities} />
 			</div>
 			<div className="feasibilities">
