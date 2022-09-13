@@ -61,7 +61,7 @@ const Home = () => {
 
 	const editHandler = (feasibility) => {
 		setEditMode({state:true, id: feasibility._id})
-		setFormData({...feasibility, dateReceived: moment(feasibility.dateReceived).format("YYYY-MM-DD"), dateCompleted: feasibility.dateCompleted ? moment(feasibility.dateCompleted).format("YYYY-MM-DD"): ""})
+		setFormData({...feasibility, dateReceived: moment(feasibility.dateReceived).format("YYYY-MM-DD HH:MM"), dateCompleted: feasibility.dateCompleted ? moment(feasibility.dateCompleted).format("YYYY-MM-DD HH:MM"): ""})
 	}
 
 	const deleteHandler = async (id) => {
