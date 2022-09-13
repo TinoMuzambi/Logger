@@ -118,8 +118,10 @@ const Home = () => {
 						<label htmlFor="dateCompleted">Date Completed</label>
 						<input type="datetime-local" id="dateCompleted" max={moment().format("YYYY-MM-DD")} value={formData.dateCompleted} onChange={(e) => setFormData((prev) => ({...prev, dateCompleted: e.target.value}))} />
 					</div>
+					<div className="input-group">
 					<button type="submit">{editMode.state ? "Update" : "Create new"} Feasibility</button>
-				</form>
+
+						</div>				</form>
 				<Stats feasibilities={feasibilities} />
 			</div>
 			<div className="feasibilities">
