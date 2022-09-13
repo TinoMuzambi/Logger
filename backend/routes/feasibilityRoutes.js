@@ -18,16 +18,16 @@ router.get("/:id", feasibilityController.show);
 /**
  * POST request for creating a feasibility.
  */
-router.post("/", feasibilityController.create)
+router.post("/", feasibilityController.create);
 
 /**
  * PUT request for updating a feasibility.
  */
-router.put("/:id", feasibilityController.update)
+router.put("/:id", feasibilityController.update);
 
 /**
  * DELETE request for deleting a feasibility.
  */
-router.delete("/:id", feasibilityController.remove)
+router.delete("/:id", feasibilityController.remove);
 
 module.exports = router;
