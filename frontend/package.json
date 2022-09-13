@@ -1,22 +1,23 @@
 {
-    "name": "logger",
-    "private": true,
-    "scripts": {
-        "dev": "next",
-        "build": "next build",
-        "start": "next start"
-    },
-    "dependencies": {
-        "moment": "^2.29.4",
-        "next": "latest",
-        "react": "latest",
-        "react-dom": "latest",
-        "react-icons": "^4.4.0"
-    },
-    "license": "MIT",
-    "devDependencies": {
-        "eslint": "8.11.0",
-        "eslint-config-next": "12.1.0",
-        "sass": "latest"
-    }
+  "name": "logger",
+  "private": true,
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "moment": "^2.29.4",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-icons": "^4.4.0"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "8.11.0",
+    "eslint-config-next": "12.1.0",
+    "prettier": "^2.7.1",
+    "sass": "latest"
+  }
 }
