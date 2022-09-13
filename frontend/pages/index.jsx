@@ -126,6 +126,7 @@ const Home = () => {
 			</div>
 			<div className="feasibilities">
 			<h2>My Feasibilities</h2>
+				<div className="feasibilities-wrapper">
 				{feasibilities.map((feasibility, key) => (
 					<div className="feasibility" key={key}>
 						<div className="info">
@@ -157,6 +158,7 @@ const Home = () => {
 						</div>
 					</div>
 				))}
+				</div>
 
 			</div>
 			</div>
