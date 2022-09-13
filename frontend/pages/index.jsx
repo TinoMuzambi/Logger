@@ -61,7 +61,7 @@ const Home = () => {
 
 	const editHandler = (feasibility) => {
 		setEditMode({state:true, id: feasibility._id})
-		setFormData({...feasibility, dateReceived: moment(feasibility.dateReceived).format("YYYY-MM-DD HH:MM"), dateCompleted: feasibility.dateCompleted ? moment(feasibility.dateCompleted).format("YYYY-MM-DD HH:MM"): ""})
+		setFormData({...feasibility, dateReceived: moment(feasibility.dateReceived).format("YYYY-MM-DD HH:mm"), dateCompleted: feasibility.dateCompleted ? moment(feasibility.dateCompleted).format("YYYY-MM-DD HH:mm"): ""})
 	}
 
 	const deleteHandler = async (id) => {
@@ -91,8 +91,8 @@ const Home = () => {
 
 			<div className="container">
 			<div className="form-holder">
-				<h2>Record new Feasibility</h2>
-				<form onSubmit={submitHandler}>
+				<h2>Stats</h2>
+				{/* <form onSubmit={submitHandler}>
 					<div className="input-group">
 						<label htmlFor="name">Name</label>
 						<input type="text" id="name" required value={formData.name} onChange={(e) => setFormData((prev) => ({...prev, name: e.target.value}))} />
@@ -112,16 +112,16 @@ const Home = () => {
 					</div>
 					<div className="input-group">
 						<label htmlFor="dateReceived">Date Received</label>
-						<input type="datetime-local" id="dateReceived" max={moment().format("YYYY-MM-DD")} required value={formData.dateReceived} onChange={(e) => setFormData((prev) => ({...prev, dateReceived: e.target.value}))} />
+						<input type="datetime-local" id="dateReceived" max={moment().format("YYYY-MM-DD HH:mm")} required value={formData.dateReceived} onChange={(e) => setFormData((prev) => ({...prev, dateReceived: e.target.value}))} />
 					</div>
 					<div className="input-group">
 						<label htmlFor="dateCompleted">Date Completed</label>
-						<input type="datetime-local" id="dateCompleted" max={moment().format("YYYY-MM-DD")} value={formData.dateCompleted} onChange={(e) => setFormData((prev) => ({...prev, dateCompleted: e.target.value}))} />
+						<input type="datetime-local" id="dateCompleted" min={formData.dateReceived ? formData.dateReceived : ""} max={moment().format("YYYY-MM-DD HH:mm")} value={formData.dateCompleted} onChange={(e) => setFormData((prev) => ({...prev, dateCompleted: e.target.value}))} />
 					</div>
 					<div className="input-group">
 					<button type="submit">{editMode.state ? "Update" : "Create new"} Feasibility</button>
 
-						</div>				</form>
+						</div>				</form> */}
 				<Stats feasibilities={feasibilities} />
 			</div>
 			<div className="feasibilities">
@@ -143,11 +143,11 @@ const Home = () => {
 						</div>
 						<div className="entry">
 							<h3>Date Received:</h3>
-							<p>{moment(feasibility.dateReceived).format("DD/MM/YYYY HH:MM:SS")}</p>
+							<p>{moment(feasibility.dateReceived.replace("Z", "")).format("DD/MM/YYYY HH:mm")}</p>
 						</div>
 						<div className="entry">
 							<h3>Date Completed:</h3>
-							<p>{feasibility?.dateCompleted?moment(feasibility?.dateCompleted).format("DD/MM/YYYY HH:MM"): null}</p>
+							<p>{feasibility?.dateCompleted ? moment(feasibility?.dateCompleted.replace("Z", "")).format("DD/MM/YYYY HH:mm"): null}</p>
 						</div>
 						</div>
 
