@@ -21,7 +21,7 @@ const Home = () => {
 		const data = await res.json()
 
 		console.log(data);
-		setFeasibilities(data.sort((a,b) => a.dateReceived.localeCompare(b.dateReceived)))
+		setFeasibilities(data.sort((a,b) => moment(b.dateReceived) - moment(a.dateReceived)))
 	}
 
 	useEffect(() => {
@@ -112,11 +112,11 @@ const Home = () => {
 					</div>
 					<div className="input-group">
 						<label htmlFor="dateReceived">Date Received</label>
-						<input type="date" id="dateReceived" max={moment().format("YYYY-MM-DD")} required value={formData.dateReceived} onChange={(e) => setFormData((prev) => ({...prev, dateReceived: e.target.value}))} />
+						<input type="datetime-local" id="dateReceived" max={moment().format("YYYY-MM-DD")} required value={formData.dateReceived} onChange={(e) => setFormData((prev) => ({...prev, dateReceived: e.target.value}))} />
 					</div>
 					<div className="input-group">
 						<label htmlFor="dateCompleted">Date Completed</label>
-						<input type="date" id="dateCompleted" max={moment().format("YYYY-MM-DD")} value={formData.dateCompleted} onChange={(e) => setFormData((prev) => ({...prev, dateCompleted: e.target.value}))} />
+						<input type="datetime-local" id="dateCompleted" max={moment().format("YYYY-MM-DD")} value={formData.dateCompleted} onChange={(e) => setFormData((prev) => ({...prev, dateCompleted: e.target.value}))} />
 					</div>
 					<button type="submit">{editMode.state ? "Update" : "Create new"} Feasibility</button>
 				</form>
@@ -141,7 +141,7 @@ const Home = () => {
 						</div>
 						<div className="entry">
 							<h3>Date Received:</h3>
-							<p>{moment(feasibility.dateReceived).format("DD/MM/YYYY HH:MM")}</p>
+							<p>{moment(feasibility.dateReceived).format("DD/MM/YYYY HH:MM:SS")}</p>
 						</div>
 						<div className="entry">
 							<h3>Date Completed:</h3>
