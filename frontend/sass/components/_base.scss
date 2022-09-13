@@ -95,10 +95,6 @@ body {
 				box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 				padding: 1rem;
 	
-				&:hover .buttons {
-					opacity: 1;
-					pointer-events: all;
-				}
 				
 				.info {
 					display: flex;
@@ -118,33 +114,6 @@ body {
 						h3 {
 							font-size: 1rem;
 							font-weight: 600;
-						}
-					}
-				}
-	
-				.buttons {
-					opacity: 0;
-					pointer-events: none;
-					transition: opacity .4s ease;
-					position: absolute;
-					right: 0;
-					top: 50%;
-					transform: translateY(-50%);
-					align-self: center;
-	
-					button {
-						margin: 0 .5rem;
-						padding: 0.5rem;
-						background: black;
-						border-radius: 1rem;
-						border: none;
-						outline: none;
-						box-shadow: 0 0 15px 5px rgba($color: white, $alpha: .4);
-						cursor: pointer;
-	
-						&:hover,&:focus {
-							box-shadow: 0 0 20px 5px rgba($color: white, $alpha: .4);
-	
 						}
 					}
 				}
